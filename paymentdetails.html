@@ -1,0 +1,158 @@
+<div class="table-responsive">  
+<section class="content">
+    <div class="row">
+    <div class="col-md-12 col-sm-6">
+   <div class="box box-primary">
+   <div class="box-body">
+       
+  <div id="formConfirmation">
+      <style>
+         .well {
+             color: black;
+             background-color: #42e5f4;
+         }
+       
+    </style>
+    <div collapse="isCollapsed">
+  <div class="well well-sm">
+      <table class="table" ng-model="rep"> 
+	<thead>
+            <tr>
+		<th>Payment Code</th> 
+		<th>Amount value</th>
+                <th>Salary From</th>
+                <th>Salary To</th>
+                
+	</tr>
+	</thead>
+	<tbody>
+        <h4 class="box-title text-center">Institution Details</h4>        
+         <tr ng-repeat="paydtdata in paydetaildata" >
+             <td>{{paydtdata.paycode}}</td>
+             <td>{{paydtdata.payvalue}}</td>
+             <td>{{paydtdata.salaryfrom}}</td>
+             <td>{{paydtdata.salaryto}}</td>
+             <td><button type="button" class="btn btn-info btn"   ng-click="showPaymentDetails(paydtdata.paycode)" data-toggle="modal" data-target="#updatePaymentDetails"><i class="glyphicon glyphicon-pencil"></i></button>
+                 <button type="button" class="btn btn-danger btn" ng-click="deletePaymentDetailsById(paydtdata.paycode)" data-toggle="modal"  data-target="#deletePaymentDetails" ><i class="glyphicon glyphicon-trash"></i></button></td>
+         </tr>
+	</tbody>
+     </table>
+      </div><!-- Modal -->
+
+<button id="myBtn" class="btn btn-primary" data-toggle="modal" data-target="#addPaymentDetails">Add</button>
+     </div>
+    </div> 
+</div>
+   </div>
+    </div>
+</div>
+</section> 
+</div>
+    
+    <!--Pop up for new Fees Entry-->
+  <div class="modal fade" id="addPaymentDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <section class="content-header">
+                   <h1>      
+                   Enter Payment Details 
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   </h1>
+               </section>
+               <section class="content">   
+                <div class="row">
+                <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-body">                           
+            <div class="modal-body">
+                           <div class="form-group col-md-12">
+                              <label>Payment Code</label>
+                              <span class="glyphicon glyphicon-user"></span>
+                              <input  type="text"  name="paycode" ng-model="payroll.paycode" class="form-control ng-dirty ng-invalid ng-invalid-required" ng-pattern='/^\s*\w*\s*$/' maxlength="2" required>
+                          </div>
+                            <div class="form-group col-md-12">
+                               <label>Amount Value</label>
+                               <input type="text" name="payvalue" ng-model="payroll.payvalue" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="4" ng-pattern="/^[0-9]*$/" required/>
+                            </div>
+                           <div class="form-group col-md-12">
+                               <label>Salary From</label>
+                               <input type="text" name="salaryfrom" ng-model="payroll.salaryfrom" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="6" ng-pattern="/^[0-9]*$/" required/>
+                            </div>
+                            <div class="form-group col-md-12">
+                               <label>Salary To</label>
+                               <input type="text" name="salaryto" ng-model="payroll.salaryto" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="6" ng-pattern="/^[0-9]*$/" required/>
+                            </div>
+                 <button type="button" ng-click="addPaymentDetails()" class="btn btn-primary">submit</button>
+                 <button type="button" class="btn btn-primary">Reset</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div></div></div></div></div></section>
+    </div>
+</div>  
+</div>  
+     <div class="modal fade" id="updatePaymentDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <section class="content-header">
+                   <h1>      
+                   Update Institution Details 
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   </h1>
+               </section>
+               <section class="content">   
+                <div class="row">
+                <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-body">                           
+            <div class="modal-body">
+                         <div class="form-group col-md-12">
+                              <label>Payment Code</label>
+                              <span class="glyphicon glyphicon-user"></span>
+                              <input  type="text"  name="paycode" ng-model="pdtdata.paycode" class="form-control ng-dirty ng-invalid ng-invalid-required" ng-pattern='/^\s*\w*\s*$/' maxlength="2" required>
+                          </div>
+                            <div class="form-group col-md-12">
+                               <label>Amount Value</label>
+                               <input type="text" name="payvalue" ng-model="pdtdata.payvalue" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="4" ng-pattern="/^[0-9]*$/" required/>
+                            </div>
+                           <div class="form-group col-md-12">
+                               <label>Salary From</label>
+                               <input type="text" name="salaryfrom" ng-model="pdtdata.salaryfrom" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="6" ng-pattern="/^[0-9]*$/" required/>
+                            </div>
+                            <div class="form-group col-md-12">
+                               <label>Salary To</label>
+                               <input type="text" name="salaryto" ng-model="pdtdata.salaryto" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="6" ng-pattern="/^[0-9]*$/" required/>
+                            </div>
+                 <button type="button" ng-click="updatePaymentDetails()" class="btn btn-primary">submit</button>
+                 <button type="button" class="btn btn-primary">Reset</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div></div></div></div></div></section></div>
+    </div>
+</div>  
+</div> 
+
+  <div class="modal fade" id="deletePaymentDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">                         
+            <div class="modal-body">
+                 <section class="content-header">
+                   <h1>      
+                   Delete
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   </h1>
+               </section>
+               <section class="content">   
+                <div class="row">
+                <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-body">
+                   <p>You are about to delete.</p>
+                <p>Do you want to proceed?</p>
+                 <div style="text-align:right">
+                     <button type="button" class="btn btn-primary" ng-click="deletePayment(delpaydtdata.paycode)" >Yes</button>
+                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                   </div>
+            </div></div></div></div></section>
+</div>  
+        </div>
+    </div>
+  </div> 
+
