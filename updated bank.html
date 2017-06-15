@@ -1,0 +1,175 @@
+ <section class="content mainsection-content">
+        <div class="row">
+            <div class="col-md-12 col-sm-6">
+                <div class="box-header">
+                    <div class="box-body">
+                        <div class="col-md-offset-3 col-md-6">
+                           <form name="BankDetails" novalidate>
+                                <div class="col-md-9 form-group">
+                                    <label class="col-md-6 form-group">Bank Code</label>
+                                    <input type="text" name="paybankcode" autocomplete="off" ng-model="payroll.paybankcode" class="col-md-6 inputControl" ng-pattern='/^\s*\w*\s*$/' maxlength="2" required/>
+                                </div>
+                                <div class="col-md-2 form-group redClr">
+                                    <p ng-show="BankDetails.paybankcode.$error.required">*</p>
+                                    <p ng-show="BankDetails.paybankcode.$error.pattern">Capital Alphabets Only</p>
+                                </div>
+
+                                <div class="col-md-9 form-group">
+                                    <label class="col-md-6 form-group">Bank Name</label>
+                                    <input type="text" name="paybankname" autocomplete="off" ng-model="payroll.paybankname"" class="col-md-6 inputControl" ng-pattern='/^\s*\w*\s*$/'  maxlength="15" required/>
+                                </div>
+                                <div class="col-md-2 form-group redClr">
+                                    <p ng-show="BankDetails.paybankname.$error.required">*</p>
+                                     <p ng-show="BankDetails.paybankname.$error.pattern">Numbers Only</p>
+                                </div>
+
+                                
+                                
+                                 
+                                <div class="col-md-5 form-group"></div>
+                                <div class="col-md-7 form-group">
+                                   <button id="myBtn" type="button"  class="btn btnstyless" ng-click="addBankDetails()"  ng-disabled="BankDetails.$invalid">submit</button>
+                                </div>
+                                <!--ng-click="insertSubjectDetails()"-->
+                        </form>
+                    </div>
+
+                    <div class="col-md-12 form-group">
+                        <div id="formConfirmation">
+                            <div collapse="isCollapsed">
+                                       <!--ng-show="paybankdata.length>0"-->
+                                <table class="{{tableclass}}" ng-show="paybankdata.length>0" ng-model="rep">
+                                    <thead>
+                                        <tr>
+                                              <th>Bank Code</th> 
+	                                    	<th>Bank Name</th>
+                                            <th>Edit/Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="paybnkdata in paybankdata">
+                                              <td>{{paybnkdata.paybankcode}}</td>
+                                              <td>{{paybnkdata.paybankname}}</td>
+                                            <td>
+                                                    <button type="button" class="btnicon" ng-click="showBankDetails(paybnkdata.paybankcode)" data-toggle="modal" data-target="#updateBankDetails">
+                                                    <i class="glyphicon glyphicon-pencil"></i> </md-button>
+                                                    <button type="button" class="btnicon" ng-click="deleteBankDetailsById(paybnkdata.paybankcode)" data-toggle="modal" data-target="#deleteBankDetails"><i class="glyphicon glyphicon-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                               
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--</div>-->
+            </div>
+        </div>
+    </section>
+<!--</div>-->
+
+
+<form name="updateSubjectDetailsForm" novalidate>
+    <div class="modal fade" id="updateSubjectDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <section class="content-header">
+                    <h1>
+                        Update Subject Details
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </h1>
+                </section>
+                <section class="content">
+                    <div class="row rowpadding">
+                        <div class="col-md-12  modelstyle">
+                            <!--<div class="box box-primary">-->
+                            <div class="box-body">
+                                <div class="modal-body">
+                                    <div class="col-md-9 form-group" data-tip="Only Readable">
+                                        <label class="col-md-5">Subject Code</label>
+                                        <input type="text" name="subjectcode" ng-model="subjecttype.subjectcode" class="col-md-7 inputControl" readonly>
+                                    </div>
+                                    <div class="col-md-9 form-group">
+                                        <label class="col-md-5">Subject Name</label>
+                                        <input type="text" name="subjectname" ng-model="subjecttype.subjectname" class="col-md-7 inputControl" ng-pattern='/^[a-zA-Z\s]*$/' maxlength="30" >
+                                    </div>
+                                    <div class="col-md-2 form-group redClr">
+                                          <p ng-show="updateSubjectDetailsForm.subjectname.$error.pattern">Alphabets Only</p>
+                                    </div>
+                                    <div class="col-md-9 form-group">
+                                        <label class="col-md-5">Subject Order</label>
+                                        <input type="text" name="subjectorder" ng-model="subjecttype.subjectorder" class="col-md-7 inputControl" ng-pattern='/^[0-9]*$/' maxlength="30" >
+                                    </div>
+                                    <div class="col-md-2 form-group redClr">
+                                          <p ng-show="updateSubjectDetailsForm.subjectorder.$error.pattern">Numbers Only</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--</div>-->
+                        </div>
+                      <div class="col-md-12 form-group">
+                          <div class ="col-md-3 col-xs-0 col-sm-0"></div>
+                             <div class ="col-md-2 col-xs-12 ">
+                              <button id="myBtn" type="button"  class="btn btnstyless" ng-click="updateSubjectDetails()" data-dismiss="modal">Update</button>
+                             </div>
+                            <!--<div class ="col-md-2 col-xs-12 ">
+                              <button id="myBtn" type="reset" class="btn btnstyless" ng-click="updateclassentryform.$setPristine()">Reset</button>
+                            </div>-->
+                           <div class ="col-md-2 col-xs-12 ">
+                              <button id="myBtn" type="button"  class="btn btnstyless" data-dismiss="modal">Close</button>
+                        </div>
+                       </div>
+                       
+                       <br><br>
+
+                </section>
+                </div>
+            </div>
+        </div>
+</form>
+
+<div class="modal fade" id="deleteSubjectDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-popup">
+            <div class="modal-body1">
+                <section class="content-header">
+                    <h4>
+                        Do you want to Delete
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </h4>
+                </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--<div class="box box-danger">-->
+                            <div class="box-body">
+                                  <!--<div class="col-md-12 form-group buttonsection">
+                                          <div class ="col-md-4 col-xs-12">
+                                            <md-button id="myBtn" type="button" class="md-primary md-raised" ng-click="deleteClassEntryById(clsentry.std,clsentry.sec)" data-dismiss="modal">Confirm</md-button>
+                                            </div>
+                                           <div class ="col-md-4  col-xs-12">
+                                          <md-button id="myBtn" type="button" class="md-primary md-raised" data-dismiss="modal">Cancel</md-button>
+                                        </div>
+                                  </div>-->
+                                  <div class="col-md-12 form-group buttonsection">
+                                       <div class ="col-md-4 col-xs-12">
+                                                                </div>
+                                          <div class ="col-md-4 col-xs-12">
+                                            <button id="myBtn" type="button" class="btn btnstyless" ng-click="deleteSubjectDetailsById(subjecttype.subjectcode)" data-dismiss="modal">Confirm</button>
+                                            </div>
+                                          <div class ="col-md-4  col-xs-12">
+                                          <button id="myBtn" type="button" class="btn btnstyless"  data-dismiss="modal">Cancel</button>
+                                        </div>
+                                  </div>
+                            </div>
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>

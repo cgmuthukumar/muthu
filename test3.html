@@ -1,0 +1,32 @@
+<div class="well well-sm">
+      <table class="table" ng-model="rep"> 
+	<thead>
+            <tr>
+		<th>Payment Code</th> 
+		<th>Payment Type</th>
+                <th>Payment Description</th>
+                
+	</tr>
+	</thead>
+	<tbody>
+        <h4 class="box-title text-center">Institution Details</h4>        
+         <tr ng-repeat="paydata in paydescdata" >
+             <td>{{paydata.paycode}}</td>
+             <td>{{paydata.paytype}}</td>
+             <td>{{paydata.paydescription}}</td>
+             <td><button type="button" class="btn btn-info btn"   ng-click="showPaymentDescDetails(paydata.paycode)" data-toggle="modal" data-target="#updatePaymentDescDetails"><i class="glyphicon glyphicon-pencil"></i></button>
+                 <button type="button" class="btn btn-danger btn" ng-click="deletePaymentDescDetailsById(paydata.paycode)" data-toggle="modal"  data-target="#deletePaymentDescDetails" ><i class="glyphicon glyphicon-trash"></i></button></td>
+         </tr>
+	</tbody>
+     </table>
+      </div><!-- Modal -->
+
+<button id="myBtn" class="btn btn-primary" data-toggle="modal" data-target="#addPaymentDescDetails">Add</button>
+     </div>
+    </div> 
+</div>
+   </div>
+    </div>
+</div>
+</section> 
+</div>

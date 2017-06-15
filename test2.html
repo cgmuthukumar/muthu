@@ -1,0 +1,74 @@
+ <div class="modal fade" id="updatePaymentDescDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <section class="content-header">
+                   <h1>      
+                   Update Institution Details 
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   </h1>
+               </section>
+               <section class="content">   
+                <div class="row">
+                <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-body">                           
+            <div class="modal-body">
+                         <div class="form-group col-md-12">
+                       <label>Select Type</label>
+                            <div class="form-group">
+                               <input class="magic-radio" type="radio" ng-model="pdescdata.paytype" value="allowance" id="73"/>
+                                    <label for="73">
+                                      Allowance
+                                    </label>
+                            </div>
+                          <div class="form-group">
+                             <input class="magic-radio" type="radio" ng-model="pdescdata.paytype" value="deduction" id="74"/>
+                              <label for="74">
+                                      Deduction
+                             </label>
+                            </div>   
+                       </div>
+                 <div class="form-group col-md-12">
+                              <label>Payment Code</label>
+                              <span class="glyphicon glyphicon-user"></span>
+                              <input  type="text"  name="paycode" ng-model="pdescdata.paycode" class="form-control ng-dirty ng-invalid ng-invalid-required" ng-pattern='/^\s*\w*\s*$/' maxlength="2" required>
+                          </div>
+                            <div class="form-group col-md-12">
+                               <label>Description</label>
+                               <input type="text" name="paydescription" ng-model="pdescdata.paydescription" class="form-control ng-dirty ng-invalid ng-invalid-required" maxlength="15" ng-pattern="/^[a-zA-Z]*$/" required/>
+                            </div>
+                 <button type="button" ng-click="updatePaymentDescDetails()" class="btn btn-primary">submit</button>
+                 <button type="button" class="btn btn-primary">Reset</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div></div></div></div></div></section></div>
+    </div>
+</div>  
+</div> 
+
+  <div class="modal fade" id="deletePaymentDescDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">                         
+            <div class="modal-body">
+                 <section class="content-header">
+                   <h1>      
+                   Delete
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                   </h1>
+               </section>
+               <section class="content">   
+                <div class="row">
+                <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-body">
+                   <p>You are about to delete.</p>
+                <p>Do you want to proceed?</p>
+                 <div style="text-align:right">
+                     <button type="button" class="btn btn-primary" ng-click="deletePaymentDesc(delpaydata.paycode)" >Yes</button>
+                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                   </div>
+            </div></div></div></div></section>
+</div>  
+        </div>
+    </div>
+  </div> 
+
