@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display todays day of the week.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var d = new Date('7-9-2017');
+  var days= ["sun","mon","tus","wed","thr","fri","sat"];
+    var g =days[0];
+	  var getdays ={"sun":"no","mon":"yes","tus":"yes","wed":"yes","thr":"yes","fri":"yes","sat":"no"};
+	  // document.getElementById("demo").innerHTML = getdays.sun;
+    document.getElementById("demo").innerHTML = getdays[g];
+}
+</script>
+
+</body>
+</html>
+      
