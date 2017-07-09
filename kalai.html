@@ -1,0 +1,36 @@
+hn<!DOCTYPE html>
+<html ng-app="app">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-controller="language">
+<p>select your language</p>
+<button ng-click="angular()">angular</button>
+<button ng-click="node()">node</button>
+<button ng-click="mongodb()">mongodb</button>
+you are selected language is:{{name | uppercase}}
+
+
+
+</div>
+<script>
+var muthu=angular.module("app",[]);
+muthu.controller("language",function($scope){
+$scope.name="none";
+$scope.angular=function(){
+$scope.name="angular";
+};
+$scope.node=function(){
+$scope.name="node";
+};
+$scope.mongodb=function(){
+$scope.name="mongodb";
+};
+
+});
+
+
+</script>
+
+</body>
+</html>
